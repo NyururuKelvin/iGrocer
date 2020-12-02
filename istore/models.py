@@ -79,3 +79,8 @@ class ShippingAddress(models.Model):
 
 	def __str__(self):
 		return self.address
+
+class Subscription(models.Model):
+	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+	date_subscribed = models.DateTimeField(auto_now_add=True)
+	complete = models.BooleanField(default=False)

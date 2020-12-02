@@ -1,3 +1,8 @@
+// Material Select Initialization
+$(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    });
+
 var subjects = [
     "Where's My Stuff?",
     "Cancel Items or Orders",
@@ -15,3 +20,5 @@ var subjects = [
     $('#form-autocomplete-2').mdbAutocomplete({
     data: subjects
     });
+
+    

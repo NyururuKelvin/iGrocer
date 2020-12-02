@@ -6,7 +6,8 @@ from .models import *
 from .utils import cookieCart, cartData, guestOrder
 
 def subscription(request):
-	return render(request, 'store/subscription.html')
+	products = Product.objects.all()
+	return render(request, 'store/subscription.html', {"products":products})
 
 def store(request):
 	data = cartData(request)
