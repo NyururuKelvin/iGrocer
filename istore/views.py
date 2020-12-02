@@ -23,6 +23,8 @@ def subscription(request):
 	products = Product.objects.all()
 	return render(request, 'store/subscription.html', {"products":products})
 
+from .utils import cookieCart, cartData, guestOrder
+
 def store(request):
 	data = cartData(request)
 
