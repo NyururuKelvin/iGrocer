@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import * 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib.sites.shortcuts import get_current_site
@@ -11,10 +12,12 @@ from django.contrib.auth.models import User
 from .utils import cookieCart, cartData, guestOrder
 from django.db import IntegrityError
 from django.utils.http import urlsafe_base64_decode
-from django.utils.encoding import force_bytes
+from django.utils.encoding import force_bytes,DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core.mail import EmailMessage
 
 from .forms import SignUpForm
 from .tokens import account_activation_token
@@ -36,7 +39,6 @@ def store(request):
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request, 'store/store.html', context)
 
-
 def cart(request):
 	data = cartData(request)
 
@@ -46,6 +48,7 @@ def cart(request):
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
+
 
 def checkout(request):
 	data = cartData(request)
@@ -128,35 +131,27 @@ def activate(request, uidb64, token):
         user.profile.signup_confirmation = True
         user.save()
         login(request, user)
-        return redirect('login_url')
+        return redirect('store')
     else:
         return render(request, 'registration/activation_invalid.html')
 
-def signup_view(request):
-    if request.method  == 'POST':
+def signup(request):
+    name = "Sign Up"
+    if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            user.refresh_from_db()
-            user.profile.first_name = form.cleaned_data.get('first_name')
-            user.profile.last_name = form.cleaned_data.get('last_name')
-            user.profile.email = form.cleaned_data.get('email')
-            # user can't login until link confirmed
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            subject = 'Please Activate Your Account'
-            # load a template like get_template() 
-            # and calls its render() method immediately.
-            message = render_to_string('registration/activation_request.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                # method will generate a hash value with user related data
-                'token': account_activation_token.make_token(user),
-            })
-            user.email_user(subject, message)
-            return redirect('activation_sent')
+            form.save()
+            email = form.cleaned_data.get('email')
+            name = form.cleaned_data.get('username')
+            send_an_mail(
+            'Welcome to iGrocer App.',
+            f'Hello {name},\n '
+            'Welcome to iGrocer App and have fun.',
+            'nyururukelvin99@gmail.com@gmail.com',
+            [email],
+            fail_silently=False,
+            )
+        return redirect('store')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'registration/registration_form.html', {'form': form, 'name':name})

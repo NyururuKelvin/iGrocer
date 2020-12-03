@@ -1,4 +1,4 @@
-
+{%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% load static%}
 
@@ -6,12 +6,13 @@
   {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid" style="background-image: url(/myservices/static/images/640e297096f1860d80443a588a660f62.jpg);">
+<div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1601091854964-0d6ed1d35c93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=414&q=80); height: 100vh;">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4">
@@ -23,7 +24,13 @@
       <div class="card" style="margin-top:30%;padding-left: 10%;border-radius:3%;">
 
         <div class="card-heading">
-          <h3 style="font-family: 'Metal Mania', cursive; text-align: center; color: rgb(6, 117, 6);">iGrocer Online Store</h3>
+            <h1 style="font-family: 'Jolly Lodger', cursive; text-align: center; color: rgb(27, 119, 8);">iGrocer</h1>
+          {%if name%}
+          <strong><p class="text-secondary" style="font-size:17px;">{{name}} to see posts.</p></strong>
+          {%else%}
+          <strong><p class="text-secondary" style="font-size:17px;">Login</p></strong>
+          {%endif%}
+        </div>
         {% if form.errors %}
         <p class="text-danger"> Some Information Might be Incorrect!!</p>
         {% endif %}
@@ -43,8 +50,8 @@
             <input type="submit" class="btn btn-primary btn-sm" value="{{name}}">
             <p>Already have an account? <a class='btn btn-default' href="/accounts/login">Login</a></p>
             {%else%}
-            <input type="submit" class="btn btn-primary btn-sm" value="Login">
-            <p>Don't have an account? <a href="{% url 'signup' %}" style="color: rgb(172, 24, 73);">Sign Up</a></p>
+            <input type="submit" class="btn btn-success btn-sm" value="Login">
+            <p>Don't have an account? <a href="{% url 'signup' %}" style="color: rgb(27, 119, 8);">Sign Up</a></p>
             {%endif%}
           </div>
 

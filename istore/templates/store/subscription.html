@@ -19,9 +19,18 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
       <!-- Material Design Bootstrap -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+      <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
+      <script src="/static/js/sub.js"></script>
       {% endblock %}
 </head>
-<body>
+<body class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1601091854964-0d6ed1d35c93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=414&q=80); height: 100vh;">
   <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
@@ -61,15 +70,24 @@
           <input type="text" id="form8" class="form-control">
           <label for="form8" class="active">Address</label>
         </div>
-
+        
         <div class="md-form form-sm">
           <select class="mdb-select md-form">
-            <option value="" disabled selected>Product</option>
+            <option value="" disabled selected>Products</option>
             {% for product in products %}
             <option value="1">{{product.name}}</option>
             {% endfor %}
 
           </select>
+
+          
+
+        </div>
+
+        <!-- Material input -->
+        <div class="md-form" style="margin-top: 2px;">
+          <input type="number" id="numberExample" class="form-control">
+          <label for="numberExample">Amount in Kgs</label>
         </div>
 
         <!-- Material unchecked -->
@@ -105,15 +123,6 @@
 </div>
 </body>
 </html>
-{% block script%}
-  <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-  <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
-{% endblock %}
+
 {% endblock content %}
+
