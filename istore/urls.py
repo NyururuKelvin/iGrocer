@@ -6,7 +6,8 @@ from . import views
 
 urlpatterns = [
 	#Leave as empty string for base url
-	url(r'^$', views.store, name="store"),
+	url(r'^$', views.home, name="home"),
+	url(r'^store$', views.store, name="store"),
 	url(r'^signup', views.signup, name='signup'),
     url(r'^login', LoginView.as_view(), name='login_url'),
     url(r'^logout/', LogoutView.as_view(next_page='login_url'), name='logout_url'),

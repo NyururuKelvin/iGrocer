@@ -23,6 +23,10 @@ from .forms import SignUpForm
 from .tokens import account_activation_token
 
 @login_required
+def home(request):
+	return render(request, 'store/landing.html')
+
+@login_required
 def subscription(request):
 	products = Product.objects.all()
 	return render(request, 'store/subscription.html', {"products":products})

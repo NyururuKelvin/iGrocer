@@ -1,6 +1,7 @@
 {% extends 'store/base.html' %}
 {% load static %}
 {% block content %}
+<div class="container">
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
@@ -42,9 +43,17 @@
 
 			<br>
 			<div class="box-element hidden" id="payment-info">
-				<small>Paypal Options</small>
+				<small>Payment Options</small> <br> <br>
 				<!--<button id="make-payment">Make payment</button>-->
-				<div id="paypal-button-container"></div>
+				<div id="paypal-button-container">
+					<!-- Material unchecked -->
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="materialUnchecked">
+						<label class="form-check-label" for="materialUnchecked">M-Pesa</label> <br>
+						<input type="checkbox" class="form-check-input" id="materialUnchecked">
+						<label class="form-check-label" for="materialUnchecked">Paypal</label>
+					</div>
+				</div>
 			</div>
 			
 		</div>
@@ -57,7 +66,7 @@
 				<hr>
 				{% for item in items %}
 				<div class="cart-row">
-					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}" style="height: 50px;"></div>
 					<div style="flex:2"><p>{{item.product.name}}</p></div>
 					<div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
 					<div style="flex:1"><p>x{{item.quantity}}</p></div>
@@ -67,7 +76,7 @@
 				<h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
 			</div>
 		</div>
-	</div>
+	</div> <br>
 
 	<script src="https://www.paypal.com/sdk/js?client-id=YOUR-CLIENT-ID&currency=USD&disable-funding=credit"></script>
 
@@ -189,4 +198,5 @@
 				})
 	    }
 	</script>
+</div>
 {% endblock content %}

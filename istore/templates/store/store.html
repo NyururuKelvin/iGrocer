@@ -1,6 +1,7 @@
 {% extends 'store/base.html' %}
 {% load static %}
 {% block content %}
+<div class="container" style="margin-top: 2%;">
 	<div class="row">
 		{% for product in products %}
 		<div class="col-lg-3" style="margin-bottom: 2%;" >
@@ -9,14 +10,15 @@
 				<h6><strong>{{product.name}} ~ 1 Kg</strong></h6>
 				<hr>
 
-				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart" style="padding: 10px;">Add to Cart</button>
 				
-				<a class="btn btn-outline-success" href="#">View</a>
-				<h4 style="display: inline-block; float: right;"><strong>${{product.price}}</strong></h4>
+				<!-- <a class="btn btn-outline-success" href="#">View</a> -->
+				<h4 style="display: inline-block; float: right; margin-top: 5%;"><strong>${{product.price}}</strong></h4>
 
 			</div>
 		</div>
 		{% endfor %}
+	</div>
 	</div>
 
 {% endblock content %}

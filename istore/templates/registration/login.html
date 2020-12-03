@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1601091854964-0d6ed1d35c93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=414&q=80); height: 100vh;">
+<div class="container-fluid" style="background-image: url(https://www.freshnlean.com/wp-content/uploads/2015/04/organic-produce.jpg); height: 100vh; background-size: cover;">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4">
@@ -26,11 +26,11 @@
       <div class="card" style="margin-top:30%;padding-left: 10%;border-radius:3%;">
 
         <div class="card-heading">
-            <h1 style="font-family: 'Poiret One', cursive; text-align: center; color: rgb(27, 119, 8);">iGrocer</h1>
+            <h1 style="font-family: 'Poiret One', cursive; text-align: center; color: rgb(27, 119, 8); font-weight: bolder;">iGrocer</h1>
           {%if name%}
           <strong><p class="text-secondary" style="font-size:17px;">{{name}} to see posts.</p></strong>
           {%else%}
-          <strong><p class="text-secondary" style="font-size:17px;">Login</p></strong>
+          <strong><p class="text-secondary" style="font-size:17px; text-align: center; color: rgb(27, 119, 8);">Login</p></strong>
           {%endif%}
         </div>
         {% if form.errors %}
