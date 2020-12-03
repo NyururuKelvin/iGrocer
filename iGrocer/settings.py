@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from decouple import config, Csv
 import dj_database_url
+import django_heroku
 
 # Email configurations
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -183,3 +184,6 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning'
 }
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
