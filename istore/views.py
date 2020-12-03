@@ -22,12 +22,14 @@ from django.core.mail import EmailMessage
 from .forms import SignUpForm
 from .tokens import account_activation_token
 
+@login_required
 def subscription(request):
 	products = Product.objects.all()
 	return render(request, 'store/subscription.html', {"products":products})
 
 from .utils import cookieCart, cartData, guestOrder
 
+@login_required
 def store(request):
 	data = cartData(request)
 
@@ -39,6 +41,7 @@ def store(request):
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request, 'store/store.html', context)
 
+@login_required
 def cart(request):
 	data = cartData(request)
 
@@ -49,7 +52,7 @@ def cart(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/cart.html', context)
 
-
+@login_required
 def checkout(request):
 	data = cartData(request)
 	
@@ -60,6 +63,7 @@ def checkout(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'store/checkout.html', context)
 
+@login_required
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
@@ -85,6 +89,7 @@ def updateItem(request):
 
 	return JsonResponse('Item was added', safe=False)
 
+@login_required
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
