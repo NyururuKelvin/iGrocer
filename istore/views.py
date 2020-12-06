@@ -19,7 +19,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import EmailMessage
 
-from .forms import SignUpForm
+from .forms import SignUpForm,SubForm
 from .tokens import account_activation_token
 
 @login_required
@@ -164,3 +164,19 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form, 'name':name})
+
+
+@login_required
+def sub(request):
+
+    if request.method=='POST':
+        form=SubForm(request.POST,request.FILES)
+        if form.is_valid():
+            sub=form.save(commit=False)
+            sub.save()
+        return redirect('index')
+    
+    else:
+        form=SubForm()
+        
+    return render(request,'store/sub.html',{'form':form})
