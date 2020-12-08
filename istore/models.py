@@ -99,5 +99,27 @@ class ShippingAddress(models.Model):
 
 class Subscription(models.Model):
 	customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+	name = models.CharField(max_length=200, null=True)
+	phone = models.IntegerField(default=0, null=True, blank=True)
+	email = models.EmailField(max_length=255, blank=True)
+	location = models.CharField(max_length=200, null=False)
+	street = models.CharField(max_length=200, null=False)
+	product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+	quantity = models.IntegerField(default=0, null=True, blank=True)
+	PLANS = (
+		('Daily', 'Daily'),
+		('Weekly', 'Weekly'),
+		('Monthly', 'Monthly')
+	)
+	plan = models.CharField(
+		choices = PLANS, default='Daily', max_length=255
+	)
 	date_subscribed = models.DateTimeField(auto_now_add=True)
-	complete = models.BooleanField(default=False)
+
+	@property
+	def get_total(self):
+		total = self.product.price * self.quantity
+		return total
+
+	
+	

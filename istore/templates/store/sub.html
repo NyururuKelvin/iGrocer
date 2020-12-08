@@ -1,0 +1,68 @@
+{% extends 'store/base.html'%}
+{% load bootstrap4 %} 
+{% load static %}
+
+{% block styles %}
+        {% bootstrap_css %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">          
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1592201426550-83c4be24a0a7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80);">
+        <div class="row">
+            <div class="col-lg-4 col-md-4"></div>
+            <div class="col-lg-4 col-md-4 cardd">
+                <div class="header" style="border-bottom: 1px solid white; text-align: center; margin-bottom: 2%;">
+                    <h5 class="hd">YOUR SUBSCRIPTION</h5>
+                </div>
+                <form  action="{%url 'subb' %}" method="post" enctype="multipart/form-data" style="margin-bottom: 2%;">
+                    {%csrf_token%}
+
+                    {% bootstrap_form form%}
+                    
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <h6 style="color: white;">Products</h6>
+                          <div class="form-check">
+                              {% for product in products %}
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              {{product.name}}
+                            </label> <br>
+                            {%endfor%}
+                          </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+
+                    <input type="submit" class="btn btn-md" style="background-color: rgb(23, 129, 23); color: white;" value="SUBMIT">
+                </form>
+                
+            <div class="col-lg-4 col-md-4"></div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
+  {% endblock %}

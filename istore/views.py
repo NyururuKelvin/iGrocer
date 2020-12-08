@@ -19,22 +19,29 @@ from django.template.loader import render_to_string
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import EmailMessage
 
-from .forms import SignUpForm
+from .forms import SignUpForm,SubForm
 from .tokens import account_activation_token
 
 @login_required
 def home(request):
-	return render(request, 'store/landing.html')
+
+	current_user = request.user
+
+	return render(request, 'store/landing.html', {'current_user':current_user})
 
 @login_required
-def subscription(request):
-	products = Product.objects.all()
-	return render(request, 'store/subscription.html', {"products":products})
+def data(request):
+
+	current_user = request.user
+	subs = Subscription.objects.all()
+
+	return render(request, 'store/subscription.html', {"subs":subs, 'current_user':current_user})
 
 from .utils import cookieCart, cartData, guestOrder
 
 @login_required
 def store(request):
+	current_user = request.user
 	data = cartData(request)
 
 	cartItems = data['cartItems']
@@ -42,29 +49,31 @@ def store(request):
 	items = data['items']
 
 	products = Product.objects.all()
-	context = {'products':products, 'cartItems':cartItems}
+	context = {'products':products, 'cartItems':cartItems, 'current_user':current_user}
 	return render(request, 'store/store.html', context)
 
 @login_required
 def cart(request):
+	current_user = request.user
 	data = cartData(request)
 
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
 
-	context = {'items':items, 'order':order, 'cartItems':cartItems}
+	context = {'items':items, 'order':order, 'cartItems':cartItems, 'current_user':current_user}
 	return render(request, 'store/cart.html', context)
 
 @login_required
 def checkout(request):
+	current_user = request.user
 	data = cartData(request)
 	
 	cartItems = data['cartItems']
 	order = data['order']
 	items = data['items']
 
-	context = {'items':items, 'order':order, 'cartItems':cartItems}
+	context = {'items':items, 'order':order, 'cartItems':cartItems, 'current_user':current_user}
 	return render(request, 'store/checkout.html', context)
 
 @login_required
@@ -160,7 +169,27 @@ def signup(request):
             [email],
             fail_silently=False,
             )
-        return redirect('store')
+        return redirect('home')
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form, 'name':name})
+
+
+@login_required
+def sub(request):
+
+	current_user = request.user
+	products = Product.objects.all()
+
+	if request.method == 'POST':
+		form = SubForm(request.POST)
+		if form.is_valid():
+			sub = form.save(commit=False)
+			sub.user = current_user
+			sub.save()
+			return redirect('home')
+	else:
+		form = SubForm()
+	return render(request,'store/sub.html',{'form':form, 'current_user':current_user, 'products':products})
+
+
