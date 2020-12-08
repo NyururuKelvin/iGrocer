@@ -12,7 +12,7 @@ urlpatterns = [
 	url(r'^signup', views.signup, name='signup'),
     url(r'^login', LoginView.as_view(), name='login_url'),
     url(r'^logout/', LogoutView.as_view(next_page='login_url'), name='logout_url'),
-	url(r'^sub/$', views.subscription, name="sub"),
+	url(r'^sub/$', views.data, name="data"),
 	url(r'^cart/$', views.cart, name="cart"),
 	url(r'^checkout/$', views.checkout, name="checkout"),
 	url(r'^update_item/$', views.updateItem, name="update_item"),

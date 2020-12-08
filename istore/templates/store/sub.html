@@ -5,24 +5,26 @@
 {% block styles %}
         {% bootstrap_css %}
         <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">          
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 {% endblock %}
 
 {% block content %}
     <div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1592201426550-83c4be24a0a7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80);">
-        <div class="row" style="">
+        <div class="row">
             <div class="col-lg-4 col-md-4"></div>
-            <div class="col-lg-4 col-md-4 card">
-                <div class="header" style="border-bottom: 1px solid rgb(23, 129, 23); text-align: center; margin-bottom: 2%;">
-                    <h5>YOUR SUBSCRIPTION</h5>
+            <div class="col-lg-4 col-md-4 cardd">
+                <div class="header" style="border-bottom: 1px solid white; text-align: center; margin-bottom: 2%;">
+                    <h5 class="hd">YOUR SUBSCRIPTION</h5>
                 </div>
-                    <form  action="{%url 'subb' %}" method="post" enctype="multipart/form-data">
-                        {%csrf_token%}
+                <form  action="{%url 'subb' %}" method="post" enctype="multipart/form-data" style="margin-bottom: 2%;">
+                    {%csrf_token%}
 
-                        {% bootstrap_form form%}
-                        <input type="submit" class="btn btn-md" style="background-color: rgb(23, 129, 23); color: white;" value="SUBMIT">
-                    </form>
-                </div>
+                    {% bootstrap_form form%}
+                    <input type="submit" class="btn btn-md" style="background-color: rgb(23, 129, 23); color: white;" value="SUBMIT">
+                </form>
+                
             <div class="col-lg-4 col-md-4"></div>
         </div>
     </div>

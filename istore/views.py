@@ -27,9 +27,9 @@ def home(request):
 	return render(request, 'store/landing.html')
 
 @login_required
-def subscription(request):
-	products = Product.objects.all()
-	return render(request, 'store/subscription.html', {"products":products})
+def data(request):
+	subs = Subscription.objects.all()
+	return render(request, 'store/subscription.html', {"subs":subs})
 
 from .utils import cookieCart, cartData, guestOrder
 
@@ -160,7 +160,7 @@ def signup(request):
             [email],
             fail_silently=False,
             )
-        return redirect('store')
+        return redirect('home')
     else:
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form, 'name':name})
@@ -174,7 +174,7 @@ def sub(request):
         if form.is_valid():
             sub=form.save(commit=False)
             sub.save()
-        return redirect('index')
+        return redirect('home')
     
     else:
         form=SubForm()

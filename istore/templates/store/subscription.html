@@ -1,7 +1,7 @@
 {% extends 'store/base.html' %}
 {% load bootstrap4 %}
 {% load static %}
-{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
     <title>iGrocer</title>
     {% block styles %}
       {% bootstrap_css %}
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
       <!-- Font Awesome -->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
       <!-- Google Fonts -->
@@ -19,110 +19,81 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
       <!-- Material Design Bootstrap -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <!-- Bootstrap tooltips -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-      <!-- Bootstrap core JavaScript -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-      <!-- MDB core JavaScript -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-      <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
-      <script src="/static/js/sub.js"></script>
       {% endblock %}
 </head>
 <body>
-  <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Header-->
-      <div class="modal-header green white-text">
-        <h4 class="title">Your Subscription</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body mb-0">
-        <div class="md-form form-sm">
-          <i class="fas fa-user-edit prefix active"></i>
-          <input type="text" id="form8" class="form-control">
-          <label for="form8" class="active">Your name</label>
-        </div>
-
-        <!-- Material input -->
-        <div class="md-form form-sm">
-          <i class="fas fa-phone prefix active"></i>
-          <input type="number" id="numberExample" class="form-control">
-          <label for="numberExample">Phone no.</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fas fa-envelope prefix active"></i>
-          <input type="password" id="form9" class="form-control">
-          <label for="form9" class="active">Your email</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fas fa-map-marker prefix active"></i>
-          <input type="text" id="form8" class="form-control">
-          <label for="form8" class="active">Address</label>
-        </div>
-        
-        <div class="md-form form-sm">
-          <select class="mdb-select md-form">
-            <option value="" disabled selected>Products</option>
-            {% for product in products %}
-            <option value="1">{{product.name}}</option>
-            {% endfor %}
-
-          </select>
-
-          
-
-        </div>
-
-        <!-- Material input -->
-        <div class="md-form" style="margin-top: 2px;">
-          <input type="number" id="numberExample" class="form-control">
-          <label for="numberExample">Amount in Kgs</label>
-        </div>
-
-        <!-- Material unchecked -->
-        Choose Your Plan
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
-          <label class="form-check-label" for="materialUnchecked">Daily</label>
-        </div>
-
-        <!-- Material checked -->
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="materialChecked" name="materialExampleRadios" checked>
-          <label class="form-check-label" for="materialChecked">Weekly</label>
-        </div>
-
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="materialUnchecked" name="materialExampleRadios">
-          <label class="form-check-label" for="materialUnchecked">Monthly</label>
-        </div>
-
-        <div class="text-center mt-1-half">
-          <button class="btn btn-success mb-2 waves-effect waves-light">Submit <i class="fas fa-send ml-1"></i></button>
-        </div>
-
-      </div>
+  {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center heading">SUBSCRIPTION DATA</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">Customer</th>
+            <th class="text-center">Location</th>
+            <th class="text-center">Street</th>
+            <th class="text-center">Product</th>
+            <th class="text-center">Quantity in Kgs</th>
+            <th class="text-center">Plan</th>
+            <th class="text-center">Sort</th>
+            <th class="text-center">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sub in subs %}
+          <tr>
+            <td class="pt-3-half" contenteditable="true">{{sub.name}}</td>
+            <td class="pt-3-half" contenteditable="true">{{sub.location}}</td>
+            <td class="pt-3-half" contenteditable="true">{{sub.street}}</td>
+            <td class="pt-3-half" contenteditable="true">{{sub.product}}</td>
+            <td class="pt-3-half" contenteditable="true">{{sub.quantity}}</td>
+            <td class="pt-3-half" contenteditable="true">{{sub.plan}}</td>
+            <td class="pt-3-half">
+              <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                    aria-hidden="true"></i></a></span>
+              <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                    aria-hidden="true"></i></a></span>
+            </td>
+            <td>
+              <span class="table-remove"><button type="button"
+                  class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
     </div>
-    <!--/.Content-->
   </div>
 </div>
+<!-- Editable table -->
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+  {% endblock content %}
 
-<div class="text-center" style="margin: 7.4%;">
-  <a href="" class="btn btn-success btn-rounded my-3" data-toggle="modal" data-target="#modalContactForm">Subscription</a>
-</div>
+  {% block scripts %}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
+  {% endblock %}
+  
 </body>
 </html>
 
-{% endblock content %}
+
 
