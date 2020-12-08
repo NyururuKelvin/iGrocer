@@ -25,4 +25,4 @@ class UpdateUser(forms.ModelForm):
 class SubForm(forms.ModelForm):
     class Meta:
         model = Subscription
-        exclude = ['customer']
+        exclude = ['customer',]

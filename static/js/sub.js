@@ -86,3 +86,8 @@ $BTN.on('click', () => {
   // Output the result
   $EXPORT.text(JSON.stringify(data));
 });
+
+// Material Select Initialization
+$(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    });

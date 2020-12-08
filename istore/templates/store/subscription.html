@@ -11,13 +11,9 @@
     {% block styles %}
       {% bootstrap_css %}
       <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
-      <!-- Font Awesome -->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-      <!-- Google Fonts -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-      <!-- Bootstrap core CSS -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Material Design Bootstrap -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
       {% endblock %}
 </head>
@@ -25,57 +21,57 @@
   {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">        
         <!-- Editable table -->
-<div class="card">
-  <h3 class="card-header text-center heading">SUBSCRIPTION DATA</h3>
-  <div class="card-body">
-    <div id="table" class="table-editable">
-      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
-            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-      <table class="table table-bordered table-responsive-md table-striped text-center">
-        <thead>
-          <tr>
-            <th class="text-center">Customer</th>
-            <th class="text-center">Location</th>
-            <th class="text-center">Street</th>
-            <th class="text-center">Product</th>
-            <th class="text-center">Quantity in Kgs</th>
-            <th class="text-center">Plan</th>
-            <th class="text-center">Sort</th>
-            <th class="text-center">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for sub in subs %}
-          <tr>
-            <td class="pt-3-half" contenteditable="true">{{sub.name}}</td>
-            <td class="pt-3-half" contenteditable="true">{{sub.location}}</td>
-            <td class="pt-3-half" contenteditable="true">{{sub.street}}</td>
-            <td class="pt-3-half" contenteditable="true">{{sub.product}}</td>
-            <td class="pt-3-half" contenteditable="true">{{sub.quantity}}</td>
-            <td class="pt-3-half" contenteditable="true">{{sub.plan}}</td>
-            <td class="pt-3-half">
-              <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                    aria-hidden="true"></i></a></span>
-              <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                    aria-hidden="true"></i></a></span>
-            </td>
-            <td>
-              <span class="table-remove"><button type="button"
-                  class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-            </td>
-          </tr>
-          {%endfor%}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-<!-- Editable table -->
+        <div class="card">
+          <h3 class="card-header text-center hd" style="color: green">SUBSCRIPTION DATA</h3>
+          <div class="card-body">
+            <div id="table" class="table-editable">
+              <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+                    class="fas fa-plus fa-1x" aria-hidden="true"></i></a></span>
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                  <tr>
+                    <th class="text-center">Customer</th>
+                    <th class="text-center">Location</th>
+                    <th class="text-center">Street</th>
+                    <th class="text-center">Product</th>
+                    <th class="text-center">Quantity (Kgs)</th>
+                    <th class="text-center">Plan</th>
+                    <th class="text-center">Sort</th>
+                    <th class="text-center">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for sub in subs %}
+                  <tr>
+                    <td class="pt-3-half" contenteditable="true">{{sub.name}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{sub.location}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{sub.street}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{sub.product}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{sub.quantity}}</td>
+                    <td class="pt-3-half" contenteditable="true">{{sub.plan}}</td>
+                    <td class="pt-3-half">
+                      <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                            aria-hidden="true"></i></a></span>
+                      <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                            aria-hidden="true"></i></a></span>
+                    </td>
+                    <td>
+                      <span class="table-remove"><button type="button"
+                          class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Editable table -->
       </div>
-      <div class="col-md-2"></div>
+      <div class="col-md-1"></div>
     </div>
   </div>
   {% endblock content %}

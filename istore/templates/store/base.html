@@ -61,7 +61,7 @@
 	</script>
 
 </head>
-<body>
+
 
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: green;" >
 	  <a class="navbar-brand" href="{% url 'home' %}">i-Grocer</a>
@@ -88,10 +88,10 @@
 	  </div>
 	</nav>
 
-            {% block content %}
+	{% block content %}
 
 
-            {% endblock content %}
+	{% endblock %}
 	{% include 'store/footer.html' %}
 
 
@@ -108,5 +108,5 @@
     {% endblock %}
 
 	
-</body>
+
 </html>
