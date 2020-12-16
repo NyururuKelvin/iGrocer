@@ -21,60 +21,60 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1592201426550-83c4be24a0a7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80);">
-        <div class="row">
-            <div class="col-lg-4 col-md-4"></div>
-            <div class="col-lg-4 col-md-4 cardd">
-                <div class="header" style="border-bottom: 1px solid white; text-align: center; margin-bottom: 2%;">
-                    <h5 class="hd">YOUR SUBSCRIPTION</h5>
-                </div>
-                <form method="post" novalidate>
-                  {% csrf_token %}
-                  <div class="row">
-                      <div class="col-md-6">
-                        {{ form.name|as_crispy_field }}
-                      </div>
-                      <div class="col-md-6">
-                        {{ form.phone|as_crispy_field }}
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                        {{ form.location|as_crispy_field }}
-                      </div>
-                      <div class="col-md-6">
-                        {{ form.street|as_crispy_field }}
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                        {{ form.product|as_crispy_field }}
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-6">
-                        {{ form.quantity|as_crispy_field }}
-                      </div>
-                      <div class="col-md-6">
-                        {{ form.plan|as_crispy_field }}
-                      </div>
-                  </div>
-                  <button type="submit" class="btn btn-success">Submit</button>
-              </form>
-                
-            <div class="col-lg-4 col-md-4"></div>
+  <div class="container-fluid" style="background-image: url(https://images.unsplash.com/photo-1592201426550-83c4be24a0a7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80);">
+    <div class="row">
+      <div class="col-lg-4 col-md-4"></div>
+      <div class="col-lg-4 col-md-4 cardd">
+        <div class="header" style="border-bottom: 1px solid white; text-align: center; margin-bottom: 2%;">
+            <h5 class="hd">YOUR SUBSCRIPTION</h5>
         </div>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="row">
+              <div class="col-md-6">
+                {{ form.name|as_crispy_field }}
+              </div>
+              <div class="col-md-6">
+                {{ form.phone|as_crispy_field }}
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{ form.location|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+              {{ form.street|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              {{ form.product|as_crispy_field }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              {{ form.quantity|as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+              {{ form.plan|as_crispy_field }}
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+      <div class="col-lg-4 col-md-4"></div>
     </div>
+  </div>
 {% endblock content %}
 
 {% block scripts %}
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
-  {% endblock %}
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
+{% endblock %}
