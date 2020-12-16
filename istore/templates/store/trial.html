@@ -1,0 +1,71 @@
+{% extends 'store/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block styles %}
+      {% bootstrap_css %}
+      <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+      {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                  {{ form.name|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                  {{ form.phone|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  {{ form.email|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                  {{ form.location|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  {{ form.street|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                  {{ form.product|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                  {{ form.quantity|as_crispy_field }}
+                </div>
+                <div class="col-md-6">
+                  {{ form.plan|as_crispy_field }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/sub.js' %}"></script>
+  {% endblock %}

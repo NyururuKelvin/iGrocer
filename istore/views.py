@@ -18,6 +18,7 @@ from .tokens import account_activation_token
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import EmailMessage
+from django.contrib import messages
 
 from .forms import SignUpForm,SubForm
 from .tokens import account_activation_token
@@ -187,9 +188,25 @@ def sub(request):
 			sub = form.save(commit=False)
 			sub.user = current_user
 			sub.save()
+			messages.success(request, 'Your Subscription saved successfully!')
 			return redirect('home')
 	else:
 		form = SubForm()
 	return render(request,'store/sub.html',{'form':form, 'current_user':current_user, 'products':products})
 
 
+def trial(request):
+
+	current_user = request.user
+	products = Product.objects.all()
+
+	if request.method == 'POST':
+		form = SubForm(request.POST)
+		if form.is_valid():
+			sub = form.save(commit=False)
+			sub.user = current_user
+			sub.save()
+			return redirect('home')
+	else:
+		form = SubForm()
+	return render(request,'store/trial.html',{'form':form, 'current_user':current_user, 'products':products})

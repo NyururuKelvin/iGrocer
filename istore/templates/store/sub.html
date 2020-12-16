@@ -2,20 +2,22 @@
 {% load bootstrap4 %} 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block styles %}
-        {% bootstrap_css %}
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">          
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  {% bootstrap_css %}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'css/main.css'%}"  >
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">          
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 {% endblock %}
 
 {% block content %}
@@ -26,29 +28,39 @@
                 <div class="header" style="border-bottom: 1px solid white; text-align: center; margin-bottom: 2%;">
                     <h5 class="hd">YOUR SUBSCRIPTION</h5>
                 </div>
-                <form  action="{%url 'subb' %}" method="post" enctype="multipart/form-data" style="margin-bottom: 2%;">
-                    {%csrf_token%}
-
-                    {% bootstrap_form form%}
-                    
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <h6 style="color: white;">Products</h6>
-                          <div class="form-check">
-                              {% for product in products %}
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                              {{product.name}}
-                            </label> <br>
-                            {%endfor%}
-                          </div>
-                        </div>
-                        <div class="col-md-3"></div>
+                <form method="post" novalidate>
+                  {% csrf_token %}
+                  <div class="row">
+                      <div class="col-md-6">
+                        {{ form.name|as_crispy_field }}
                       </div>
-
-                    <input type="submit" class="btn btn-md" style="background-color: rgb(23, 129, 23); color: white;" value="SUBMIT">
-                </form>
+                      <div class="col-md-6">
+                        {{ form.phone|as_crispy_field }}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                        {{ form.location|as_crispy_field }}
+                      </div>
+                      <div class="col-md-6">
+                        {{ form.street|as_crispy_field }}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-12">
+                        {{ form.product|as_crispy_field }}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                        {{ form.quantity|as_crispy_field }}
+                      </div>
+                      <div class="col-md-6">
+                        {{ form.plan|as_crispy_field }}
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+              </form>
                 
             <div class="col-lg-4 col-md-4"></div>
         </div>
