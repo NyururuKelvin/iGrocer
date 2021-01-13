@@ -9,7 +9,6 @@ urlpatterns = [
 	url(r'^$', views.home, name="home"),
 	url(r'^store$', views.store, name="store"),
 	url(r'^subb/$', views.sub, name="subb"),
-	url(r'^trial/$', views.trial, name="trial"),
 	url(r'^signup', views.signup, name='signup'),
     url(r'^login', LoginView.as_view(), name='login_url'),
     url(r'^logout/', LogoutView.as_view(next_page='login_url'), name='logout_url'),

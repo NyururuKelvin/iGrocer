@@ -127,5 +127,87 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .pt-3-half {
-	padding-top: 1.4rem;
+		padding-top: 1.4rem;
+}
+
+#cart-icon{
+	margin-top: 14px;
+}
+
+.log{
+	margin-top: 14px;
+}
+
+.card {
+	border-radius: 4px;
+	background: #fff;
+	box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+	transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+	padding: 14px 80px 18px 36px;
+	cursor: pointer;
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.card h3 {
+	font-weight: 600;
+}
+
+.card img {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	max-height: 120px;
+}
+
+.card-1 {
+	background-image: url(https://www.nicepng.com/png/detail/240-2405501_fruit-bowl-healthy-food-food-icon.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 80px;
+	height: 100px;
+}
+
+.card-2 {
+	background-image: url(https://cdn3.vectorstock.com/i/thumb-large/19/42/healthy-vegetable-summer-salad-bowl-vector-8841942.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 80px;
+	height: 100px;
+}
+
+.card-3 {
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrX9txJOJTi08trhKXY9LWXhdJ5jXPzdoUzQ&usqp=CAU);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 80px;
+	height: 100px;
+}
+.card-4 {
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgkrPGnfqFxQh9ItwGgN3A-jtBMsCMJWIJ1w&usqp=CAU);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 80px;
+	height: 100px;
+}
+
+h5 {
+	color: green;
+}
+
+h4 {
+	color: orangered;
+}
+
+@media(max-width: 990px) {
+	.card {
+		margin: 20px;
 	}
+}
+
+.d-block img{
+	height: 40vh;
+}

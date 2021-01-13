@@ -28,7 +28,7 @@ def home(request):
 
 	current_user = request.user
 
-	return render(request, 'store/landing.html', {'current_user':current_user})
+	return render(request, 'store/home.html', {'current_user':current_user})
 
 @login_required
 def data(request):
